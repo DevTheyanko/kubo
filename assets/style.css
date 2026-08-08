@@ -11,8 +11,7 @@
   --radius:18px;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;overflow-x:hidden;width:100%;}
-body{overflow-x:hidden;width:100%;}
+html{scroll-behavior:smooth;}
 body{font-family:'Manrope',sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;}
 img{max-width:100%;display:block;}
 a{text-decoration:none;color:inherit;}
