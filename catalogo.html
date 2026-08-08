@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catálogo — KUBO</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo-kubo.svg">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="msg">Envíos a toda Venezuela · Paga en cuotas con KuboCredit</span>
+    <div class="links"><a href="#">Ayuda</a><a href="#">Tiendas físicas</a><a href="#">Rastrear pedido</a></div>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap hd-row">
+    <a class="logo" href="index.html">
+      <img src="assets/logo-kubo.svg" alt="KUBO" class="logo-img">
+      <span>KUBO</span>
+    </a>
+    <nav class="main">
+      <a href="catalogo.html" class="active">Ofertas</a>
+      <a href="catalogo.html">Categorías</a>
+      <a href="catalogo.html?categoria=tecnologia">Tecnología</a>
+      <a href="catalogo.html?categoria=hogar">Hogar</a>
+      <a href="membresias.html">Membresías</a>
+      <a href="index.html#marcas">Marcas</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <div class="hd-actions">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="margin-right:8px;flex-shrink:0;color:#8B8B90"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" id="searchInput" placeholder="Buscar en KUBO...">
+      </div>
+      <a class="icon-btn" href="login.html" aria-label="Cuenta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg></a>
+      <a class="icon-btn" href="favoritos.html" aria-label="Favoritos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-9.5-9C.5 8 2 4 6 4c2 0 3.5 1.2 4 2.5C10.5 5.2 12 4 14 4c4 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg><span class="badge hide" data-fav-badge>0</span></a>
+      <a class="icon-btn" href="carrito.html" aria-label="Carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg><span class="badge hide" data-cart-badge>0</span></a>
+      <button class="burger" id="burgerBtn" aria-label="Menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <div class="mobile-search"><input type="text" placeholder="Buscar en KUBO..." data-search-input></div>
+    <a href="catalogo.html">Ofertas</a><a href="catalogo.html?categoria=tecnologia">Tecnología</a><a href="catalogo.html?categoria=hogar">Hogar</a><a href="membresias.html">Membresías</a><a href="favoritos.html">Favoritos</a><a href="carrito.html">Carrito</a>
+  </div>
+</header>
+
+<div class="pagehead">
+  <div class="wrap">
+    <div>
+      <div class="breadcrumb"><a href="index.html">Inicio</a> / <span id="crumbCat">Catálogo</span></div>
+      <h1 class="hd" id="pageTitle">Catálogo completo</h1>
+    </div>
+    <button class="mobile-filter-btn" id="openFilters">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+      Filtros
+    </button>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="catalog-layout">
+      <aside class="filters" id="filtersPanel">
+        <button class="close-filters" id="closeFilters" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+        <div class="group">
+          <h3>Categoría <span class="fcount" id="catCount">8</span></h3>
+          <div class="filter-group-wrap">
+            <div class="filter-list" id="catFilters"></div>
+            <div class="filter-fade" id="catFade"></div>
+          </div>
+          <button class="show-more-btn" id="catToggle" type="button">
+            <span>Ver todas</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+        <div class="group">
+          <h3>Marca <span class="fcount" id="brandCount">16</span></h3>
+          <div class="filter-search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            <input type="text" id="brandSearch" placeholder="Buscar marca...">
+          </div>
+          <div class="filter-group-wrap">
+            <div class="filter-list" id="brandFilters"></div>
+            <div class="filter-fade" id="brandFade"></div>
+          </div>
+          <button class="show-more-btn" id="brandToggle" type="button">
+            <span>Ver todas</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+        <div class="group">
+          <h3>Precio máximo</h3>
+          <input type="range" id="priceRange" min="0" max="4000" step="10" value="4000">
+          <div class="price-vals"><span>$0</span><span id="priceVal">$4.000</span></div>
+        </div>
+        <span class="clear" id="clearFilters">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2m2 0v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V6h12z"/></svg>
+          Limpiar filtros
+        </span>
+      </aside>
+
+      <div>
+        <div class="catalog-toolbar">
+          <span class="count" id="resultCount">0 productos</span>
+          <select id="sortSelect">
+            <option value="relevancia">Relevancia</option>
+            <option value="asc">Precio: menor a mayor</option>
+            <option value="desc">Precio: mayor a menor</option>
+            <option value="nombre">Nombre A-Z</option>
+          </select>
+        </div>
+        <div class="prod-grid" id="catalogGrid"></div>
+        <div class="empty-state" id="emptyState" style="display:none;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <h3>No encontramos productos</h3>
+          <p>Prueba ajustando los filtros o la búsqueda.</p>
+          <span class="clear" id="emptyClear" style="border-bottom:2px solid var(--yellow);cursor:pointer;">Limpiar filtros</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap f-bottom" style="border-top:none;margin-top:0;">
+    <span>© 2026 KUBO C.A. Todos los derechos reservados.</span>
+    <span>Términos · Privacidad</span>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/584240000000" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.7 14.2c-.2.7-1.4 1.4-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.3-4.8-4.2-4.9-4.4-.1-.2-1.2-1.6-1.2-3s.8-2.1 1.1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2 .1.2.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.4.1.6-.1l.9-1c.2-.3.4-.2.7-.1.3.1 1.7.8 2 .9.3.2.5.2.6.3.1.2.1.9-.1 1.6z"/></svg>
+</a>
+
+<script src="assets/store.js"></script>
+<script>
+const params = new URLSearchParams(window.location.search);
+let state = {
+  categoria: params.getAll('categoria'),
+  marca: params.getAll('marca'),
+  q: params.get('q') || '',
+  maxPrice: 4000,
+  sort: 'relevancia'
+};
+
+const brands = [...new Set(PRODUCTS.map(p => p.brand))].sort();
+
+const checkSVG = '<svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+const catIconsF = {
+  'audio-tv':'<rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4"/>',
+  'aires':'<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10v4M12 10v4M17 10v4"/>',
+  'refrigeracion':'<rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 6h6M9 12h6M9 18h6"/>',
+  'electrodomesticos':'<circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/>',
+  'lavado':'<circle cx="8" cy="19" r="2"/><circle cx="17" cy="19" r="2"/><path d="M3 4h2l2.4 10.4a2 2 0 0 0 2 1.6h6.2a2 2 0 0 0 2-1.6L20 8H6"/>',
+  'cocina':'<path d="M6 3v7a3 3 0 0 0 6 0V3M9 10v11M17 3c-2 2-2 6 0 8v10"/>',
+  'tecnologia':'<rect x="4" y="3" width="16" height="12" rx="1"/><path d="M9 21h6M12 15v6"/>',
+  'hogar':'<path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/>'
+};
+
+document.getElementById('catCount').textContent = CATEGORIES.length;
+document.getElementById('brandCount').textContent = brands.length;
+
+document.getElementById('catFilters').innerHTML = CATEGORIES.map(c => `
+  <label class="opt">
+    <input type="checkbox" value="${c.id}" class="cat-check" ${state.categoria.includes(c.id) ? 'checked' : ''}>
+    <span class="box">${checkSVG}</span>
+    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${catIconsF[c.id] || ''}</svg>
+    <span class="lbl">${c.name}</span>
+  </label>
+`).join('');
+
+document.getElementById('brandFilters').innerHTML = brands.map(b => `
+  <label class="opt" data-name="${b.toLowerCase()}">
+    <input type="checkbox" value="${b}" class="brand-check" ${state.marca.includes(b) ? 'checked' : ''}>
+    <span class="box">${checkSVG}</span>
+    <span class="lbl">${b}</span>
+  </label>
+`).join('');
+
+function setupCollapsible(listId, toggleId, fadeId, visibleCount){
+  const list = document.getElementById(listId);
+  const toggle = document.getElementById(toggleId);
+  const fade = document.getElementById(fadeId);
+  const visible = () => [...list.querySelectorAll('.opt')].filter(o => o.style.display !== 'none');
+
+  function collapsedHeight(){
+    const items = visible();
+    if(items.length === 0) return 0;
+    const n = Math.min(visibleCount, items.length);
+    const last = items[n - 1];
+    return last.offsetTop + last.offsetHeight - items[0].offsetTop;
+  }
+  function expandedHeight(){
+    const items = visible();
+    if(items.length === 0) return 0;
+    const first = items[0], last = items[items.length - 1];
+    return Math.min(last.offsetTop + last.offsetHeight - first.offsetTop, 240);
+  }
+  function refreshToggle(){
+    const items = visible();
+    if(items.length <= visibleCount){
+      toggle.style.display = 'none';
+      fade.classList.add('hide');
+      list.classList.remove('expanded');
+      list.style.maxHeight = 'none';
+      return;
+    }
+    toggle.style.display = 'flex';
+    if(list.classList.contains('expanded')){
+      list.style.maxHeight = expandedHeight() + 'px';
+      fade.classList.add('hide');
+    } else {
+      list.style.maxHeight = collapsedHeight() + 'px';
+      fade.classList.remove('hide');
+    }
+  }
+  toggle.addEventListener('click', () => {
+    const scrollBefore = window.scrollY;
+    const open = list.classList.toggle('expanded');
+    toggle.classList.toggle('open', open);
+    toggle.querySelector('span').textContent = open ? 'Ver menos' : 'Ver todas';
+    list.style.maxHeight = (open ? expandedHeight() : collapsedHeight()) + 'px';
+    fade.classList.toggle('hide', open);
+    toggle.blur();
+    requestAnimationFrame(() => { window.scrollTo(window.scrollX, scrollBefore); });
+  });
+  refreshToggle();
+  return refreshToggle;
+}
+const refreshCatToggle = setupCollapsible('catFilters', 'catToggle', 'catFade', 4);
+const refreshBrandToggle = setupCollapsible('brandFilters', 'brandToggle', 'brandFade', 4);
+
+document.getElementById('brandSearch').addEventListener('input', e => {
+  const q = e.target.value.trim().toLowerCase();
+  const list = document.getElementById('brandFilters');
+  const fade = document.getElementById('brandFade');
+  const toggle = document.getElementById('brandToggle');
+  let matches = 0;
+  list.querySelectorAll('.opt').forEach(opt => {
+    const match = opt.dataset.name.includes(q);
+    opt.style.display = match ? 'flex' : 'none';
+    if(match) matches++;
+  });
+  let noMatch = list.querySelector('.no-match');
+  if(matches === 0){
+    if(!noMatch){
+      noMatch = document.createElement('div');
+      noMatch.className = 'no-match';
+      noMatch.textContent = 'Sin coincidencias';
+      list.appendChild(noMatch);
+    }
+  } else if(noMatch){ noMatch.remove(); }
+
+  if(q){
+    list.classList.add('expanded');
+    list.style.maxHeight = '240px';
+    fade.classList.add('hide');
+    toggle.style.display = 'none';
+  } else {
+    list.classList.remove('expanded');
+    toggle.classList.remove('open');
+    toggle.querySelector('span').textContent = 'Ver todas';
+    toggle.style.display = 'flex';
+    refreshBrandToggle();
+  }
+});
+
+if(state.q) document.getElementById('searchInput').value = state.q;
+
+function applyFilters(){
+  let list = PRODUCTS.slice();
+  if(state.categoria.length) list = list.filter(p => state.categoria.includes(p.categoria));
+  if(state.marca.length) list = list.filter(p => state.marca.includes(p.brand));
+  if(state.q) list = list.filter(p => p.name.toLowerCase().includes(state.q.toLowerCase()) || p.brand.toLowerCase().includes(state.q.toLowerCase()));
+  list = list.filter(p => p.price <= state.maxPrice);
+
+  if(state.sort === 'asc') list.sort((a,b) => a.price - b.price);
+  else if(state.sort === 'desc') list.sort((a,b) => b.price - a.price);
+  else if(state.sort === 'nombre') list.sort((a,b) => a.name.localeCompare(b.name));
+
+  const grid = document.getElementById('catalogGrid');
+  const empty = document.getElementById('emptyState');
+  const countEl = document.getElementById('resultCount');
+  countEl.innerHTML = '<span class="sk" style="display:inline-block;width:80px;height:12px;"></span>';
+
+  document.querySelectorAll('.load-sentinel, .load-more-wrap').forEach(n => n.remove());
+
+  if(list.length === 0){
+    grid.innerHTML = skeletonGrid(4);
+    empty.style.display = 'none';
+    setTimeout(() => {
+      grid.innerHTML = '';
+      empty.style.display = 'block';
+      countEl.textContent = '0 productos';
+    }, 450);
+  } else {
+    empty.style.display = 'none';
+    lazyRenderGrid('catalogGrid', list, {
+      batchSize: 8,
+      delay: 450,
+      onBatch: (shown, total) => {
+        countEl.textContent = `${total} producto${total !== 1 ? 's' : ''}${shown < total ? ` · mostrando ${shown}` : ''}`;
+      }
+    });
+  }
+
+  const title = state.categoria.length === 1 ? CATEGORIES.find(c => c.id === state.categoria[0])?.name : 'Catálogo completo';
+  document.getElementById('pageTitle').textContent = title || 'Catálogo completo';
+  document.getElementById('crumbCat').textContent = title || 'Catálogo';
+}
+
+document.querySelectorAll('.cat-check').forEach(el => el.addEventListener('change', () => {
+  state.categoria = [...document.querySelectorAll('.cat-check:checked')].map(c => c.value);
+  applyFilters();
+}));
+document.querySelectorAll('.brand-check').forEach(el => el.addEventListener('change', () => {
+  state.marca = [...document.querySelectorAll('.brand-check:checked')].map(c => c.value);
+  applyFilters();
+}));
+document.getElementById('priceRange').addEventListener('input', e => {
+  state.maxPrice = Number(e.target.value);
+  document.getElementById('priceVal').textContent = '$' + formatPrice(state.maxPrice);
+  applyFilters();
+});
+document.getElementById('sortSelect').addEventListener('change', e => { state.sort = e.target.value; applyFilters(); });
+document.getElementById('searchInput').addEventListener('keydown', e => {
+  if(e.key === 'Enter'){ state.q = e.target.value.trim(); applyFilters(); }
+});
+document.getElementById('searchInput').addEventListener('input', e => {
+  if(e.target.value === ''){ state.q = ''; applyFilters(); }
+});
+
+function clearAll(){
+  state = {categoria:[], marca:[], q:'', maxPrice:4000, sort:'relevancia'};
+  document.querySelectorAll('.cat-check,.brand-check').forEach(c => c.checked = false);
+  document.getElementById('priceRange').value = 4000;
+  document.getElementById('priceVal').textContent = '$4.000';
+  document.getElementById('sortSelect').value = 'relevancia';
+  document.getElementById('searchInput').value = '';
+  document.getElementById('brandSearch').value = '';
+  document.querySelectorAll('#brandFilters .opt').forEach(o => o.style.display = 'flex');
+  const catList = document.getElementById('catFilters');
+  const brandList = document.getElementById('brandFilters');
+  catList.classList.remove('expanded');
+  brandList.classList.remove('expanded');
+  document.getElementById('catToggle').classList.remove('open');
+  document.getElementById('brandToggle').classList.remove('open');
+  document.getElementById('catToggle').querySelector('span').textContent = 'Ver todas';
+  document.getElementById('brandToggle').querySelector('span').textContent = 'Ver todas';
+  document.getElementById('brandToggle').style.display = 'flex';
+  refreshCatToggle();
+  refreshBrandToggle();
+  applyFilters();
+}
+document.getElementById('clearFilters').addEventListener('click', clearAll);
+document.getElementById('emptyClear').addEventListener('click', clearAll);
+
+const filtersPanel = document.getElementById('filtersPanel');
+document.getElementById('openFilters').addEventListener('click', () => filtersPanel.classList.add('open'));
+document.getElementById('closeFilters').addEventListener('click', () => filtersPanel.classList.remove('open'));
+
+applyFilters();
+</script>
+
+</body>
+</html>

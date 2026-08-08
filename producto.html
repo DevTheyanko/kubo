@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Producto — KUBO</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo-kubo.svg">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="msg">Envíos a toda Venezuela · Paga en cuotas con KuboCredit</span>
+    <div class="links"><a href="#">Ayuda</a><a href="#">Tiendas físicas</a><a href="#">Rastrear pedido</a></div>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap hd-row">
+    <a class="logo" href="index.html">
+      <img src="assets/logo-kubo.svg" alt="KUBO" class="logo-img">
+      <span>KUBO</span>
+    </a>
+    <nav class="main">
+      <a href="catalogo.html">Ofertas</a>
+      <a href="catalogo.html">Categorías</a>
+      <a href="catalogo.html?categoria=tecnologia">Tecnología</a>
+      <a href="catalogo.html?categoria=hogar">Hogar</a>
+      <a href="membresias.html">Membresías</a>
+      <a href="index.html#marcas">Marcas</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <div class="hd-actions">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="margin-right:8px;flex-shrink:0;color:#8B8B90"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" placeholder="Buscar en KUBO..." data-search-input>
+      </div>
+      <a class="icon-btn" href="login.html" aria-label="Cuenta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg></a>
+      <a class="icon-btn" href="favoritos.html" aria-label="Favoritos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-9.5-9C.5 8 2 4 6 4c2 0 3.5 1.2 4 2.5C10.5 5.2 12 4 14 4c4 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg><span class="badge hide" data-fav-badge>0</span></a>
+      <a class="icon-btn" href="carrito.html" aria-label="Carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg><span class="badge hide" data-cart-badge>0</span></a>
+      <button class="burger" id="burgerBtn" aria-label="Menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <div class="mobile-search"><input type="text" placeholder="Buscar en KUBO..." data-search-input></div>
+    <a href="catalogo.html">Ofertas</a><a href="membresias.html">Membresías</a><a href="favoritos.html">Favoritos</a><a href="carrito.html">Carrito</a>
+  </div>
+</header>
+
+<div class="pagehead">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Inicio</a> / <a href="catalogo.html" id="crumbCat">Catálogo</a> / <span id="crumbName">Producto</span></div>
+  </div>
+</div>
+
+<section class="section" id="pdContent"></section>
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div><h2 class="hd">También te puede interesar</h2></div>
+    </div>
+    <div class="prod-grid" id="relatedGrid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap f-bottom" style="border-top:none;margin-top:0;">
+    <span>© 2026 KUBO C.A. Todos los derechos reservados.</span>
+    <span>Términos · Privacidad</span>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/584240000000" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.7 14.2c-.2.7-1.4 1.4-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.3-4.8-4.2-4.9-4.4-.1-.2-1.2-1.6-1.2-3s.8-2.1 1.1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2 .1.2.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.4.1.6-.1l.9-1c.2-.3.4-.2.7-.1.3.1 1.7.8 2 .9.3.2.5.2.6.3.1.2.1.9-.1 1.6z"/></svg>
+</a>
+
+<script src="assets/store.js"></script>
+<script>
+const pid = new URLSearchParams(window.location.search).get('id');
+const product = findProduct(pid);
+const content = document.getElementById('pdContent');
+
+content.innerHTML = `
+  <div class="wrap">
+    <div class="pd-grid">
+      <div class="sk sk-img" style="aspect-ratio:1/1;border-radius:var(--radius);"></div>
+      <div>
+        <div class="sk sk-line w40" style="height:11px;"></div>
+        <div class="sk sk-line w90" style="height:26px;margin-top:12px;"></div>
+        <div class="sk sk-line w60" style="height:14px;margin-top:16px;"></div>
+        <div class="sk sk-line w40" style="height:36px;margin-top:20px;"></div>
+        <div class="sk" style="height:100px;margin-top:20px;border-radius:12px;"></div>
+        <div class="sk" style="height:48px;width:200px;margin-top:24px;border-radius:100px;"></div>
+      </div>
+    </div>
+  </div>`;
+document.getElementById('relatedGrid').innerHTML = skeletonGrid(4);
+
+setTimeout(renderProduct, 500);
+
+function renderProduct(){
+if(!product){
+  content.innerHTML = `
+    <div class="wrap">
+      <div class="empty-state">
+        <h3>Producto no encontrado</h3>
+        <p>El producto que buscas no existe o fue removido.</p>
+        <a class="btn btn-dark" href="catalogo.html">Volver al catálogo</a>
+      </div>
+    </div>`;
+} else {
+  document.title = product.name + ' — KUBO';
+  const catName = CATEGORIES.find(c => c.id === product.categoria)?.name || '';
+  document.getElementById('crumbCat').textContent = catName;
+  document.getElementById('crumbCat').href = 'catalogo.html?categoria=' + product.categoria;
+  document.getElementById('crumbName').textContent = product.name;
+
+  content.innerHTML = `
+    <div class="wrap">
+      <div class="pd-grid">
+        <div class="pd-gallery">${cubeIconSVG(product.id)}</div>
+        <div>
+          <div class="pd-brand">${product.brand}</div>
+          <h1 class="pd-name">${product.name}</h1>
+          <div class="pd-rating">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .8-5.2 4.9 1.4 7-6.2-3.6-6.2 3.6 1.4-7L2 9.3l7-.8z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .8-5.2 4.9 1.4 7-6.2-3.6-6.2 3.6 1.4-7L2 9.3l7-.8z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .8-5.2 4.9 1.4 7-6.2-3.6-6.2 3.6 1.4-7L2 9.3l7-.8z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .8-5.2 4.9 1.4 7-6.2-3.6-6.2 3.6 1.4-7L2 9.3l7-.8z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6.5 7 .8-5.2 4.9 1.4 7-6.2-3.6-6.2 3.6 1.4-7L2 9.3l7-.8z"/></svg>
+            <span>${product.stock} disponibles</span>
+          </div>
+          <div class="pd-price">
+            <span class="now">$${formatPrice(product.price)}</span>
+            ${product.old ? `<span class="old">$${formatPrice(product.old)}</span>` : ''}
+          </div>
+          ${product.tag ? `<span class="pd-tag">${product.tag}</span>` : ''}
+          <p class="pd-desc">${product.desc}</p>
+          <div class="pd-qty">
+            <div class="qty-box">
+              <button id="qtyMinus" aria-label="Restar">−</button>
+              <span id="qtyVal">1</span>
+              <button id="qtyPlus" aria-label="Sumar">+</button>
+            </div>
+            <span style="color:var(--muted);font-size:13px;">${product.stock} en stock</span>
+          </div>
+          <div class="pd-actions">
+            <button class="btn btn-dark" id="addBtn">Añadir al carrito</button>
+            <button class="btn btn-ghost" id="favBtn" style="border-color:#E7E5DF;color:var(--ink);">Añadir a favoritos</button>
+          </div>
+          <div class="pd-meta">
+            <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="16" height="12" rx="2"/><path d="M17 10h4l2 3v5h-6"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg> Envío a toda Venezuela</div>
+            <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg> Garantía oficial del fabricante</div>
+            <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> Paga en cuotas con KuboCredit</div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+
+  let qty = 1;
+  const qtyVal = document.getElementById('qtyVal');
+  document.getElementById('qtyPlus').addEventListener('click', () => { if(qty < product.stock){ qty++; qtyVal.textContent = qty; } });
+  document.getElementById('qtyMinus').addEventListener('click', () => { if(qty > 1){ qty--; qtyVal.textContent = qty; } });
+  document.getElementById('addBtn').addEventListener('click', () => addToCart(product.id, qty));
+
+  const favBtn = document.getElementById('favBtn');
+  function refreshFavBtn(){ favBtn.textContent = getFavs().includes(product.id) ? 'En favoritos ✓' : 'Añadir a favoritos'; }
+  refreshFavBtn();
+  favBtn.addEventListener('click', () => { toggleFav(product.id); refreshFavBtn(); });
+
+  const related = PRODUCTS.filter(p => p.categoria === product.categoria && p.id !== product.id).slice(0,4);
+  document.getElementById('relatedGrid').innerHTML = (related.length ? related : PRODUCTS.filter(p => p.id !== product.id).slice(0,4)).map(productCardHTML).join('');
+}
+}
+</script>
+
+</body>
+</html>

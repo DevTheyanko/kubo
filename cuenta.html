@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi cuenta — KUBO</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo-kubo.svg">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="msg">Envíos a toda Venezuela · Paga en cuotas con KuboCredit</span>
+    <div class="links"><a href="#">Ayuda</a><a href="#">Tiendas físicas</a><a href="#">Rastrear pedido</a></div>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap hd-row">
+    <a class="logo" href="index.html">
+      <img src="assets/logo-kubo.svg" alt="KUBO" class="logo-img">
+      <span>KUBO</span>
+    </a>
+    <nav class="main">
+      <a href="catalogo.html">Ofertas</a>
+      <a href="catalogo.html">Categorías</a>
+      <a href="catalogo.html?categoria=tecnologia">Tecnología</a>
+      <a href="catalogo.html?categoria=hogar">Hogar</a>
+      <a href="membresias.html">Membresías</a>
+      <a href="index.html#marcas">Marcas</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <div class="hd-actions">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="margin-right:8px;flex-shrink:0;color:#8B8B90"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" placeholder="Buscar en KUBO..." data-search-input>
+      </div>
+      <a class="icon-btn" href="cuenta.html" aria-label="Cuenta" style="color:var(--yellow);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg></a>
+      <a class="icon-btn" href="favoritos.html" aria-label="Favoritos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-9.5-9C.5 8 2 4 6 4c2 0 3.5 1.2 4 2.5C10.5 5.2 12 4 14 4c4 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg><span class="badge hide" data-fav-badge>0</span></a>
+      <a class="icon-btn" href="carrito.html" aria-label="Carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg><span class="badge hide" data-cart-badge>0</span></a>
+      <button class="burger" id="burgerBtn" aria-label="Menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <div class="mobile-search"><input type="text" placeholder="Buscar en KUBO..." data-search-input></div>
+    <a href="catalogo.html">Ofertas</a><a href="membresias.html">Membresías</a><a href="favoritos.html">Favoritos</a><a href="carrito.html">Carrito</a><a href="cuenta.html">Mi cuenta</a>
+  </div>
+</header>
+
+<div class="pagehead">
+  <div class="wrap">
+    <div>
+      <div class="breadcrumb"><a href="index.html">Inicio</a> / <span>Mi cuenta</span></div>
+      <h1 class="hd">Mi cuenta</h1>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="acc-layout">
+      <aside class="acc-side">
+        <div class="acc-profile">
+          <div class="acc-avatar" id="avatarInit"></div>
+          <div>
+            <div class="nm" id="profName"></div>
+            <div class="em" id="profEmail"></div>
+          </div>
+        </div>
+        <nav class="acc-nav">
+          <button class="active" data-tab="saldo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+            Saldo y KuboCredit
+          </button>
+          <button data-tab="pedidos">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg>
+            Mis pedidos
+          </button>
+          <button data-tab="direcciones">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            Direcciones
+          </button>
+          <button data-tab="perfil">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+            Datos personales
+          </button>
+          <div class="sep"></div>
+          <button class="danger" id="logoutBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+            Cerrar sesión
+          </button>
+        </nav>
+      </aside>
+
+      <div>
+        <div class="acc-tab active" id="tab-saldo">
+          <div class="balance-card">
+            <div class="top">
+              <div>
+                <div class="lbl">Saldo disponible</div>
+                <div class="amt">$<span id="saldoAmt"></span></div>
+              </div>
+              <span class="chip">KuboCredit</span>
+            </div>
+            <div class="bar-wrap">
+              <div class="bar-track"><div class="bar-fill" id="barFill"></div></div>
+              <div class="bar-labels">
+                <span>$<span id="usadoAmt">···</span> utilizado</span>
+                <span>Límite $<span id="limiteAmt">···</span></span>
+              </div>
+            </div>
+            <div class="actions">
+              <button class="btn btn-primary" id="recargarBtn">Recargar saldo</button>
+              <button class="btn btn-ghost" style="border-color:rgba(255,255,255,.25);color:#fff;" id="aumentoBtn">Solicitar aumento</button>
+            </div>
+            <svg class="deco" viewBox="0 0 200 200"><path d="M100 10 L180 55 L100 100 L20 55 Z" fill="#F5C518"/></svg>
+          </div>
+
+          <a href="membresias.html" class="mem-banner" style="text-decoration:none;margin-top:18px;">
+            <div class="txt">
+              <b>Mejora a KUBO Prime</b>
+              <span>Envío gratis sin mínimo, 7% cashback y KuboCredit ampliado</span>
+            </div>
+            <span class="btn btn-primary" style="pointer-events:none;">Ver planes</span>
+          </a>
+
+          <div class="next-pay">
+            <div>
+              <div class="lbl">Próxima cuota</div>
+              <div class="val">$<span id="proximoMonto"></span></div>
+              <div class="date">Vence el <span id="proximoFecha"></span></div>
+            </div>
+            <button class="btn btn-dark" id="pagarBtn">Pagar ahora</button>
+          </div>
+
+          <div class="acc-block">
+            <h3>Movimientos recientes</h3>
+            <div id="movList"></div>
+          </div>
+        </div>
+
+        <div class="acc-tab" id="tab-pedidos">
+          <div class="acc-block">
+            <h3>Historial de pedidos</h3>
+            <div id="ordersList"></div>
+          </div>
+        </div>
+
+        <div class="acc-tab" id="tab-direcciones">
+          <div class="acc-block">
+            <h3>Direcciones guardadas</h3>
+            <div id="addrList"></div>
+            <button class="btn btn-dark" style="margin-top:8px;" onclick="showToast('Función no disponible en la demo')">Añadir dirección</button>
+          </div>
+        </div>
+
+        <div class="acc-tab" id="tab-perfil">
+          <div class="acc-block">
+            <h3>Datos personales</h3>
+            <form id="profileForm">
+              <div class="field">
+                <label for="pfName">Nombre completo</label>
+                <div class="input-wrap">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+                  <input type="text" id="pfName">
+                </div>
+              </div>
+              <div class="field">
+                <label for="pfEmail">Correo electrónico</label>
+                <div class="input-wrap">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>
+                  <input type="email" id="pfEmail">
+                </div>
+              </div>
+              <div class="field">
+                <label for="pfPhone">Teléfono</label>
+                <div class="input-wrap">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8.1 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.9 2.2z"/></svg>
+                  <input type="tel" id="pfPhone">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-dark">Guardar cambios</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap f-bottom" style="border-top:none;margin-top:0;">
+    <span>© 2026 KUBO C.A. Todos los derechos reservados.</span>
+    <span>Términos · Privacidad</span>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/584240000000" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.7 14.2c-.2.7-1.4 1.4-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.3-4.8-4.2-4.9-4.4-.1-.2-1.2-1.6-1.2-3s.8-2.1 1.1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2 .1.2.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.4.1.6-.1l.9-1c.2-.3.4-.2.7-.1.3.1 1.7.8 2 .9.3.2.5.2.6.3.1.2.1.9-.1 1.6z"/></svg>
+</a>
+
+<script src="assets/store.js"></script>
+<script>
+document.getElementById('avatarInit').textContent = initials(USER.name);
+document.getElementById('profName').textContent = USER.name;
+document.getElementById('profEmail').textContent = USER.email;
+
+document.getElementById('saldoAmt').innerHTML = '<span class="sk" style="display:inline-block;width:110px;height:38px;vertical-align:middle;"></span>';
+document.getElementById('barFill').style.width = '0%';
+document.getElementById('proximoMonto').innerHTML = '<span class="sk" style="display:inline-block;width:60px;height:18px;vertical-align:middle;"></span>';
+setTimeout(() => {
+  document.getElementById('saldoAmt').textContent = formatPrice(USER.saldoDisponible);
+  document.getElementById('usadoAmt').textContent = formatPrice(USER.saldoUtilizado);
+  document.getElementById('limiteAmt').textContent = formatPrice(USER.limiteCredito);
+  document.getElementById('barFill').style.width = Math.min(100, (USER.saldoUtilizado / USER.limiteCredito) * 100) + '%';
+  document.getElementById('proximoMonto').textContent = formatPrice(USER.proximoPago.monto);
+  document.getElementById('proximoFecha').textContent = USER.proximoPago.fecha;
+}, 500);
+
+const movIcons = {
+  pago:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>',
+  recarga:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7-7 7 7"/></svg>',
+  compra:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg>'
+};
+
+const movList = document.getElementById('movList');
+movList.innerHTML = Array(4).fill(0).map(skeletonRow).join('');
+setTimeout(() => {
+  movList.innerHTML = USER.movimientos.map(m => `
+    <div class="mv-row">
+      <div class="mv-left">
+        <div class="mv-ic ${m.tipo}">${movIcons[m.tipo]}</div>
+        <div>
+          <div class="mv-desc">${m.desc}</div>
+          <div class="mv-date">${m.fecha}</div>
+        </div>
+      </div>
+      <div class="mv-amt ${m.monto < 0 ? 'neg' : 'pos'}">${m.monto < 0 ? '-' : '+'}$${formatPrice(Math.abs(m.monto))}</div>
+    </div>`).join('');
+}, 500);
+
+const ordersList = document.getElementById('ordersList');
+ordersList.innerHTML = Array(3).fill(0).map(skeletonRow).join('');
+setTimeout(() => {
+  ordersList.innerHTML = USER.pedidos.map(o => {
+    const statusClass = o.estado === 'Entregado' ? 'entregado' : 'en-camino';
+    const names = o.productos.map(id => findProduct(id)?.name).filter(Boolean).join(', ');
+    return `
+      <div class="ord-row">
+        <div>
+          <div class="ord-id">#${o.id}</div>
+          <div class="ord-date">${o.fecha} · ${names}</div>
+        </div>
+        <span class="ord-status ${statusClass}">${o.estado}</span>
+        <div class="ord-total">$${formatPrice(o.total)}</div>
+      </div>`;
+  }).join('');
+}, 500);
+
+document.getElementById('addrList').innerHTML = USER.direcciones.map(a => `
+  <div class="addr-card">
+    <div>
+      <div class="tag2">${a.etiqueta} ${a.principal ? '<span class="primary">Principal</span>' : ''}</div>
+      <p>${a.detalle}</p>
+    </div>
+    <span class="edit" onclick="showToast('Función no disponible en la demo')">Editar</span>
+  </div>`).join('');
+
+document.getElementById('pfName').value = USER.name;
+document.getElementById('pfEmail').value = USER.email;
+document.getElementById('pfPhone').value = USER.phone;
+
+document.querySelectorAll('.acc-nav button[data-tab]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.acc-nav button[data-tab]').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.acc-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+document.getElementById('recargarBtn').addEventListener('click', () => {
+  window.open('https://wa.me/584240000000?text=' + encodeURIComponent('Hola, quiero recargar mi saldo KuboCredit'), '_blank');
+});
+document.getElementById('aumentoBtn').addEventListener('click', () => {
+  window.open('https://wa.me/584240000000?text=' + encodeURIComponent('Hola, quiero solicitar un aumento de límite en KuboCredit'), '_blank');
+});
+document.getElementById('pagarBtn').addEventListener('click', () => {
+  window.open('https://wa.me/584240000000?text=' + encodeURIComponent('Hola, quiero pagar mi próxima cuota de $' + formatPrice(USER.proximoPago.monto)), '_blank');
+});
+document.getElementById('logoutBtn').addEventListener('click', () => {
+  showToast('Sesión cerrada');
+  setTimeout(() => window.location.href = 'login.html', 800);
+});
+document.getElementById('profileForm').addEventListener('submit', e => {
+  e.preventDefault();
+  showToast('Datos actualizados correctamente');
+});
+</script>
+
+</body>
+</html>

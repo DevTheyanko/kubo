@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Membresías — KUBO</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo-kubo.svg">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="msg">Envíos a toda Venezuela · Paga en cuotas con KuboCredit</span>
+    <div class="links"><a href="#">Ayuda</a><a href="#">Tiendas físicas</a><a href="#">Rastrear pedido</a></div>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap hd-row">
+    <a class="logo" href="index.html">
+      <img src="assets/logo-kubo.svg" alt="KUBO" class="logo-img">
+      <span>KUBO</span>
+    </a>
+    <nav class="main">
+      <a href="catalogo.html">Ofertas</a>
+      <a href="catalogo.html">Categorías</a>
+      <a href="membresias.html" class="active">Membresías</a>
+      <a href="catalogo.html?categoria=hogar">Hogar</a>
+      <a href="index.html#marcas">Marcas</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <div class="hd-actions">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="margin-right:8px;flex-shrink:0;color:#8B8B90"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" placeholder="Buscar en KUBO..." data-search-input>
+      </div>
+      <a class="icon-btn" href="login.html" aria-label="Cuenta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg></a>
+      <a class="icon-btn" href="favoritos.html" aria-label="Favoritos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-9.5-9C.5 8 2 4 6 4c2 0 3.5 1.2 4 2.5C10.5 5.2 12 4 14 4c4 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg><span class="badge hide" data-fav-badge>0</span></a>
+      <a class="icon-btn" href="carrito.html" aria-label="Carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg><span class="badge hide" data-cart-badge>0</span></a>
+      <button class="burger" id="burgerBtn" aria-label="Menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <div class="mobile-search"><input type="text" placeholder="Buscar en KUBO..." data-search-input></div>
+    <a href="catalogo.html">Ofertas</a><a href="membresias.html">Membresías</a><a href="favoritos.html">Favoritos</a><a href="carrito.html">Carrito</a><a href="cuenta.html">Mi cuenta</a>
+  </div>
+</header>
+
+<section class="mem-hero">
+  <div class="wrap">
+    <div class="eyebrow">KUBO membresías</div>
+    <h1 class="hd">Elige el plan que mejor se adapta a tu forma de comprar</h1>
+    <p>Envíos gratis, cashback, cuotas ampliadas y beneficios exclusivos. Cambia o cancela cuando quieras.</p>
+    <div class="billing-toggle">
+      <button class="active" data-billing="mensual">Mensual</button>
+      <button data-billing="anual">Anual <span class="save">Ahorra 20%</span></button>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="plans-grid" id="plansGrid"></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2 class="hd">Compara todos los beneficios</h2>
+        <p>Todo lo que incluye cada membresía, en detalle</p>
+      </div>
+    </div>
+    <div class="compare-wrap">
+      <table class="compare-table" id="compareTable"></table>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2 class="hd">Preguntas frecuentes</h2>
+      </div>
+    </div>
+    <div class="mem-faq" id="faqList"></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="mem-cta">
+      <h3 class="hd">¿Tienes un negocio? Conoce KUBO Business</h3>
+      <p>Precios mayoristas, facturación fiscal y un gestor de cuenta dedicado para tu empresa.</p>
+      <a class="btn btn-dark" href="https://wa.me/584240000000?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20KUBO%20Business" target="_blank">Hablar con ventas</a>
+    </div>
+  </div>
+</section>
+
+<footer id="contacto">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo">
+          <img src="assets/logo-kubo.svg" alt="KUBO" class="logo-img">
+          <span>KUBO</span>
+        </div>
+        <p class="desc">Las mejores marcas en electrodomésticos, tecnología y hogar, en un solo lugar. Envíos a toda Venezuela.</p>
+      </div>
+      <div>
+        <h4>Categorías</h4>
+        <ul>
+          <li><a href="catalogo.html?categoria=audio-tv">Audio y TV</a></li>
+          <li><a href="catalogo.html?categoria=electrodomesticos">Electrodomésticos</a></li>
+          <li><a href="catalogo.html?categoria=hogar">Hogar</a></li>
+          <li><a href="catalogo.html?categoria=tecnologia">Tecnología</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Cuenta</h4>
+        <ul>
+          <li><a href="membresias.html">Membresías</a></li>
+          <li><a href="cuenta.html">Mi cuenta</a></li>
+          <li><a href="carrito.html">Carrito</a></li>
+          <li><a href="favoritos.html">Favoritos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li>Barquisimeto, Lara, Venezuela</li>
+          <li>+58 424 000 0000</li>
+          <li>hola@kubo.com.ve</li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 KUBO C.A. Todos los derechos reservados.</span>
+      <span>Términos · Privacidad</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/584240000000" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.7 14.2c-.2.7-1.4 1.4-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.3-4.8-4.2-4.9-4.4-.1-.2-1.2-1.6-1.2-3s.8-2.1 1.1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2 .1.2.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.4.1.6-.1l.9-1c.2-.3.4-.2.7-.1.3.1 1.7.8 2 .9.3.2.5.2.6.3.1.2.1.9-.1 1.6z"/></svg>
+</a>
+
+<script src="assets/store.js"></script>
+<script>
+const check = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+const dash = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 12h14"/></svg>';
+
+const PLANS = [
+  {
+    id:'basico', name:'KUBO Básico', desc:'Para quienes compran de vez en cuando.',
+    priceM:0, priceA:0, badge:null,
+    features:[
+      {t:'Acceso a ofertas y catálogo completo', on:true},
+      {t:'Envío estándar a todo el país', on:true},
+      {t:'Favoritos y listas de deseos', on:true},
+      {t:'Cashback en compras', on:false},
+      {t:'Envío gratis', on:false},
+      {t:'KuboCredit con límite ampliado', on:false},
+      {t:'Soporte prioritario 24/7', on:false}
+    ]
+  },
+  {
+    id:'plus', name:'KUBO Plus', desc:'Ideal para compras frecuentes del hogar.',
+    priceM:4.99, priceA:47.90, badge:'Más popular',
+    features:[
+      {t:'Todo lo de KUBO Básico', on:true},
+      {t:'Envío gratis en compras +$50', on:true},
+      {t:'3% de cashback en cada compra', on:true},
+      {t:'Acceso anticipado a ofertas', on:true},
+      {t:'KuboCredit con límite ampliado', on:false},
+      {t:'Soporte prioritario 24/7', on:false},
+      {t:'Devoluciones extendidas a 60 días', on:false}
+    ]
+  },
+  {
+    id:'prime', name:'KUBO Prime', desc:'Máximos beneficios para compradores exigentes.',
+    priceM:9.99, priceA:95.90, badge:null,
+    features:[
+      {t:'Todo lo de KUBO Plus', on:true},
+      {t:'Envío gratis sin monto mínimo', on:true},
+      {t:'7% de cashback en cada compra', on:true},
+      {t:'KuboCredit con límite ampliado', on:true},
+      {t:'Soporte prioritario 24/7', on:true},
+      {t:'Devoluciones extendidas a 60 días', on:true},
+      {t:'Gestor de cuenta dedicado', on:false}
+    ]
+  }
+];
+
+let billing = 'mensual';
+
+function renderPlans(){
+  document.getElementById('plansGrid').innerHTML = PLANS.map(p => {
+    const price = billing === 'mensual' ? p.priceM : p.priceA;
+    const per = billing === 'mensual' ? '/mes' : '/año';
+    const featured = p.badge ? 'featured' : '';
+    return `
+    <div class="plan-card ${featured}">
+      ${p.badge ? `<span class="plan-badge">${p.badge}</span>` : ''}
+      <div class="plan-name">${p.name}</div>
+      <div class="plan-desc">${p.desc}</div>
+      <div class="plan-price">
+        <span class="num">${price === 0 ? 'Gratis' : '$' + formatPrice(price)}</span>
+        ${price > 0 ? `<span class="per">${per}</span>` : ''}
+      </div>
+      ${billing === 'anual' && price > 0 ? `<div class="plan-old-price">$${formatPrice(p.priceM * 12)} pagando mes a mes</div>` : '<div style="height:18px;"></div>'}
+      <button class="btn ${p.badge ? 'btn-primary' : 'btn-dark'} plan-cta" onclick="suscribir('${p.name}')">${price === 0 ? 'Comenzar gratis' : 'Suscribirme'}</button>
+      <ul class="plan-features">
+        ${p.features.map(f => `<li class="${f.on ? '' : 'muted'}">${f.on ? check : dash} ${f.t}</li>`).join('')}
+      </ul>
+    </div>`;
+  }).join('');
+}
+
+document.querySelectorAll('.billing-toggle button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.billing-toggle button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    billing = btn.dataset.billing;
+    renderPlans();
+  });
+});
+
+function suscribir(plan){
+  window.open('https://wa.me/584240000000?text=' + encodeURIComponent(`Hola, quiero suscribirme a la membresía ${plan}`), '_blank');
+}
+
+renderPlans();
+
+const compareRows = [
+  {label:'Envío', basico:'Estándar', plus:'Gratis desde $50', prime:'Gratis sin mínimo'},
+  {label:'Cashback en compras', basico:'no', plus:'3%', prime:'7%'},
+  {label:'Acceso anticipado a ofertas', basico:'no', plus:'yes', prime:'yes'},
+  {label:'KuboCredit ampliado', basico:'no', plus:'no', prime:'yes'},
+  {label:'Soporte prioritario 24/7', basico:'no', plus:'no', prime:'yes'},
+  {label:'Devoluciones extendidas', basico:'30 días', plus:'30 días', prime:'60 días'},
+  {label:'Descuentos exclusivos por membresía', basico:'no', plus:'yes', prime:'yes'}
+];
+function cell(v){
+  if(v === 'yes') return `<svg class="yes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>`;
+  if(v === 'no') return `<svg class="no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 12h14"/></svg>`;
+  return v;
+}
+document.getElementById('compareTable').innerHTML = `
+  <thead>
+    <tr>
+      <th>Beneficio</th>
+      <th>Básico</th>
+      <th class="hl">Plus</th>
+      <th>Prime</th>
+    </tr>
+  </thead>
+  <tbody>
+    ${compareRows.map(r => `
+      <tr>
+        <td>${r.label}</td>
+        <td>${cell(r.basico)}</td>
+        <td>${cell(r.plus)}</td>
+        <td>${cell(r.prime)}</td>
+      </tr>`).join('')}
+  </tbody>`;
+
+const FAQS = [
+  {q:'¿Puedo cancelar mi membresía en cualquier momento?', a:'Sí, puedes cancelar cuando quieras desde tu cuenta sin penalidades. Seguirás disfrutando los beneficios hasta el fin del período pagado.'},
+  {q:'¿El cashback se puede usar como saldo KuboCredit?', a:'Sí, el cashback acumulado se convierte automáticamente en saldo disponible dentro de tu cuenta KuboCredit.'},
+  {q:'¿Qué pasa si cambio de plan a mitad de mes?', a:'El cambio se aplica de inmediato y se ajusta el cobro de forma proporcional en tu siguiente ciclo de facturación.'},
+  {q:'¿La membresía aplica a compras en tienda física?', a:'Sí, todos los beneficios de envío, cashback y soporte aplican tanto en la tienda en línea como en nuestras tiendas físicas.'}
+];
+document.getElementById('faqList').innerHTML = FAQS.map((f,i) => `
+  <div class="faq-item" data-i="${i}">
+    <div class="faq-q">${f.q}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
+    <div class="faq-a">${f.a}</div>
+  </div>`).join('');
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => item.classList.toggle('open'));
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recuperar contraseña — KUBO</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo-kubo.svg">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site" style="position:static;">
+  <div class="wrap hd-row" style="justify-content:center;">
+    <a class="logo" href="index.html">
+      <img src="assets/logo-kubo.svg" alt="KUBO" class="logo-img">
+      <span>KUBO</span>
+    </a>
+  </div>
+</header>
+
+<div class="auth-shell">
+  <div class="auth-card">
+
+    <div id="stepRequest">
+      <a class="back-home" href="login.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Volver a inicio de sesión
+      </a>
+      <h1>Recuperar contraseña</h1>
+      <p class="sub">Ingresa tu correo y te enviaremos un enlace para restablecer tu contraseña.</p>
+
+      <form id="recoverForm" novalidate>
+        <div class="field" id="emailField">
+          <label for="email">Correo electrónico</label>
+          <div class="input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>
+            <input type="email" id="email" placeholder="tucorreo@ejemplo.com" required>
+          </div>
+          <span class="error">Ingresa un correo válido</span>
+        </div>
+        <button type="submit" class="btn btn-dark auth-submit">Enviar enlace de recuperación</button>
+      </form>
+    </div>
+
+    <div id="stepSent" class="step-success" style="display:none;">
+      <div class="ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <h1>Revisa tu correo</h1>
+      <p class="sub">Enviamos un enlace de recuperación a <b id="sentEmail" style="color:var(--ink);"></b>. Ábrelo para crear una nueva contraseña.</p>
+      <button class="btn btn-ghost" style="border-color:#E7E5DF;color:var(--ink);width:100%;justify-content:center;margin-top:6px;" id="resendBtn">Reenviar enlace</button>
+      <p class="auth-foot" style="margin-top:22px;"><a class="link-accent" href="login.html">Volver a inicio de sesión</a></p>
+    </div>
+
+  </div>
+</div>
+
+<script src="assets/store.js"></script>
+<script>
+document.getElementById('recoverForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const email = document.getElementById('email');
+  const emailField = document.getElementById('emailField');
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value);
+  emailField.classList.toggle('invalid', !emailOk);
+  if(emailOk){
+    document.getElementById('sentEmail').textContent = email.value;
+    document.getElementById('stepRequest').style.display = 'none';
+    document.getElementById('stepSent').style.display = 'block';
+  }
+});
+document.getElementById('resendBtn').addEventListener('click', () => showToast('Enlace reenviado'));
+</script>
+
+</body>
+</html>
