@@ -44,6 +44,15 @@ const PRODUCTS = [
   {id:32, name:'Juego de edredón 3 piezas', brand:'GENÉRICO', categoria:'hogar', price:16.99, stock:24, desc:'Edredón reversible de 3 piezas, tamaño Full/Queen, fácil de lavar.'}
 ];
 
+const SKU_PREFIX = {
+  'audio-tv':'AUD', 'aires':'AC', 'refrigeracion':'REF', 'electrodomesticos':'ELE',
+  'lavado':'LAV', 'cocina':'COC', 'tecnologia':'TEC', 'hogar':'HOG'
+};
+PRODUCTS.forEach(p => {
+  const prefix = SKU_PREFIX[p.categoria] || 'GEN';
+  p.sku = `KUBO-${prefix}-${String(p.id).padStart(4,'0')}`;
+});
+
 function findProduct(id){ return PRODUCTS.find(p => p.id === Number(id)); }
 function brandOf(name){ return name; }
 
@@ -149,7 +158,7 @@ function productCardHTML(p){
       </button>
       <div class="imgbox"><a href="producto.html?id=${p.id}">${cubeIconSVG(p.id)}</a></div>
       <div class="body">
-        <div class="brand">${p.brand}</div>
+        <div class="brand" title="SKU ${p.sku}">${p.brand}</div>
         <div class="name"><a href="producto.html?id=${p.id}">${p.name}</a></div>
         <div class="price-row">
           <div class="price">$${formatPrice(p.price)}${p.old ? `<small>$${formatPrice(p.old)}</small>` : ''}</div>

@@ -101,7 +101,7 @@ function renderCart(){
       <div class="cart-item" data-id="${p.id}">
         <div class="imgbox">${cubeIconSVG(p.id)}</div>
         <div class="info">
-          <div class="brand">${p.brand}</div>
+          <div class="brand">${p.brand} · SKU ${p.sku}</div>
           <div class="name"><a href="producto.html?id=${p.id}">${p.name}</a></div>
           <div class="price">$${formatPrice(p.price)}</div>
         </div>
@@ -160,7 +160,7 @@ function renderCart(){
     let msg = 'Hola, quiero hacer este pedido en KUBO:%0A%0A';
     Object.keys(cart).forEach(id => {
       const p = findProduct(id);
-      if(p) msg += `• ${p.name} x${cart[id]} — $${formatPrice(p.price * cart[id])}%0A`;
+      if(p) msg += `• [${p.sku}] ${p.name} x${cart[id]} — $${formatPrice(p.price * cart[id])}%0A`;
     });
     msg += `%0ATotal: $${formatPrice(total)}`;
     window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');

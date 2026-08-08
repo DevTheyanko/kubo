@@ -245,7 +245,7 @@ ordersList.innerHTML = Array(3).fill(0).map(skeletonRow).join('');
 setTimeout(() => {
   ordersList.innerHTML = USER.pedidos.map(o => {
     const statusClass = o.estado === 'Entregado' ? 'entregado' : 'en-camino';
-    const names = o.productos.map(id => findProduct(id)?.name).filter(Boolean).join(', ');
+    const names = o.productos.map(id => { const pr = findProduct(id); return pr ? `${pr.name} (${pr.sku})` : ''; }).filter(Boolean).join(', ');
     return `
       <div class="ord-row">
         <div>

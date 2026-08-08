@@ -122,7 +122,7 @@ if(!product){
       <div class="pd-grid">
         <div class="pd-gallery">${cubeIconSVG(product.id)}</div>
         <div>
-          <div class="pd-brand">${product.brand}</div>
+          <div class="pd-brand">${product.brand} <span style="color:var(--muted);font-weight:600;">· SKU ${product.sku}</span></div>
           <h1 class="pd-name">${product.name}</h1>
           <div class="pd-rating">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .8-5.2 4.9 1.4 7-6.2-3.6-6.2 3.6 1.4-7L2 9.3l7-.8z"/></svg>
@@ -149,6 +149,7 @@ if(!product){
           <div class="pd-actions">
             <button class="btn btn-dark" id="addBtn">Añadir al carrito</button>
             <button class="btn btn-ghost" id="favBtn" style="border-color:#E7E5DF;color:var(--ink);">Añadir a favoritos</button>
+            <a class="btn btn-ghost" style="border-color:#E7E5DF;color:var(--ink);" id="waConsultBtn" target="_blank">Consultar por WhatsApp</a>
           </div>
           <div class="pd-meta">
             <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="16" height="12" rx="2"/><path d="M17 10h4l2 3v5h-6"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg> Envío a toda Venezuela</div>
@@ -169,6 +170,8 @@ if(!product){
   function refreshFavBtn(){ favBtn.textContent = getFavs().includes(product.id) ? 'En favoritos ✓' : 'Añadir a favoritos'; }
   refreshFavBtn();
   favBtn.addEventListener('click', () => { toggleFav(product.id); refreshFavBtn(); });
+
+  document.getElementById('waConsultBtn').href = 'https://wa.me/584240000000?text=' + encodeURIComponent(`Hola, quiero consultar sobre este producto:\n[${product.sku}] ${product.name} — $${formatPrice(product.price)}`);
 
   const related = PRODUCTS.filter(p => p.categoria === product.categoria && p.id !== product.id).slice(0,4);
   document.getElementById('relatedGrid').innerHTML = (related.length ? related : PRODUCTS.filter(p => p.id !== product.id).slice(0,4)).map(productCardHTML).join('');
