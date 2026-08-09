@@ -428,7 +428,7 @@ footer ul li a:hover{color:var(--yellow);}
   .acc-layout{grid-template-columns:1fr;gap:16px;}
   .acc-side{position:static;padding:16px;}
   .acc-profile{padding-bottom:16px;margin-bottom:14px;}
-  .acc-nav{flex-direction:row;overflow-x:auto;gap:8px;padding-bottom:2px;flex-wrap:nowrap;scrollbar-width:none;-ms-overflow-style:none;margin:0 -16px;padding-left:16px;padding-right:16px;}
+  .acc-nav{flex-direction:row;overflow-x:auto;gap:8px;padding-bottom:2px;flex-wrap:nowrap;scrollbar-width:none;-ms-overflow-style:none;max-width:100%;}
   .acc-nav::-webkit-scrollbar{display:none;}
   .acc-nav button{white-space:nowrap;flex-shrink:0;background:var(--paper);border-radius:100px;padding:10px 16px;gap:8px;}
   .acc-nav button svg{width:16px;height:16px;}
