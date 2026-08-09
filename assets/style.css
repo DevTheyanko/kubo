@@ -36,6 +36,7 @@ header.site{background:var(--black);position:sticky;top:0;z-index:50;border-bott
 .hd-row{display:flex;align-items:center;justify-content:space-between;gap:28px;height:76px;}
 .logo{display:flex;align-items:center;gap:10px;flex-shrink:0;}
 .logo svg,.logo-img{width:38px;height:38px;border-radius:9px;display:block;}
+.logo-img-full{height:38px;width:auto;border-radius:8px;display:block;}
 .logo span{font-family:'Archivo Black',sans-serif;color:var(--paper);font-size:22px;letter-spacing:0.02em;}
 nav.main{display:flex;gap:26px;flex:1;}
 nav.main a{color:#C9C9CD;font-size:14px;font-weight:600;white-space:nowrap;transition:color .15s;}
@@ -56,6 +57,7 @@ nav.main a:hover,nav.main a.active{color:var(--yellow);}
   .icon-btn{width:32px;height:32px;}
   .icon-btn svg{width:19px;height:19px;}
   .logo svg,.logo-img{width:32px;height:32px;}
+  .logo-img-full{height:32px;}
   .logo span{font-size:18px;}
   .burger svg{width:22px;height:22px;}
 }
@@ -179,6 +181,7 @@ footer{background:var(--black);color:#B7B7BC;padding:60px 0 24px;}
 .f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;}
 .f-logo{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
 .f-logo svg,.f-logo .logo-img{width:30px;height:30px;border-radius:8px;display:block;}
+.logo-img-footer{height:32px;width:auto;}
 .f-logo span{font-family:'Archivo Black';color:var(--paper);font-size:18px;}
 footer p.desc{font-size:13.5px;line-height:1.6;max-width:280px;}
 footer h4{color:var(--paper);font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;margin-bottom:16px;}
