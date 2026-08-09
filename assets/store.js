@@ -1,13 +1,72 @@
 const CATEGORIES = [
-  {id:'audio-tv', name:'Audio y TV'},
-  {id:'aires', name:'Aires Acondicionados'},
-  {id:'refrigeracion', name:'Refrigeración'},
-  {id:'electrodomesticos', name:'Electrodomésticos'},
-  {id:'lavado', name:'Lavado'},
-  {id:'cocina', name:'Cocina'},
-  {id:'tecnologia', name:'Tecnología'},
-  {id:'hogar', name:'Hogar'}
+  {id:'audio-tv', name:'Audio y TV', group:'hogar'},
+  {id:'aires', name:'Aires Acondicionados', group:'hogar'},
+  {id:'refrigeracion', name:'Refrigeración', group:'hogar'},
+  {id:'electrodomesticos', name:'Electrodomésticos', group:'hogar'},
+  {id:'lavado', name:'Lavado', group:'hogar'},
+  {id:'cocina', name:'Cocina', group:'hogar'},
+  {id:'tecnologia', name:'Tecnología', group:'hogar'},
+  {id:'hogar', name:'Hogar', group:'hogar'},
+  {id:'dama', name:'Ropa Dama', group:'moda'},
+  {id:'caballeros', name:'Ropa Caballeros', group:'moda'},
+  {id:'kids', name:'Ropa Niños', group:'moda'},
+  {id:'calzado', name:'Calzado', group:'moda'}
 ];
+
+const CATEGORY_GROUPS = [
+  {id:'hogar', label:'Hogar y Tecnología'},
+  {id:'moda', label:'Moda'}
+];
+
+const CATEGORY_ICONS = {
+  'audio-tv':'<rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4"/>',
+  'aires':'<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10v4M12 10v4M17 10v4"/>',
+  'refrigeracion':'<rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 6h6M9 12h6M9 18h6"/>',
+  'electrodomesticos':'<circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/>',
+  'lavado':'<circle cx="8" cy="19" r="2"/><circle cx="17" cy="19" r="2"/><path d="M3 4h2l2.4 10.4a2 2 0 0 0 2 1.6h6.2a2 2 0 0 0 2-1.6L20 8H6"/>',
+  'cocina':'<path d="M6 3v7a3 3 0 0 0 6 0V3M9 10v11M17 3c-2 2-2 6 0 8v10"/>',
+  'tecnologia':'<rect x="4" y="3" width="16" height="12" rx="1"/><path d="M9 21h6M12 15v6"/>',
+  'hogar':'<path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/>',
+  'dama':'<path d="M12 2l3 4-2 2 4 13H7L11 8 9 6z"/>',
+  'caballeros':'<path d="M8 4L4 6l1 4 2-1v10h10V9l2 1 1-4-4-2-3 2-3-2z"/>',
+  'kids':'<circle cx="12" cy="12" r="8"/><path d="M9 14c.8.8 1.8 1.2 3 1.2s2.2-.4 3-1.2M9 9.5h.01M15 9.5h.01"/>',
+  'calzado':'<path d="M3 19v-3.5c0-1 .6-1.9 1.5-2.3L9 11l2.5-3 2 1.5-1.5 2 5 2c1.2.5 2 1.6 2 3v2.5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/>'
+};
+
+function initMegaMenu(){
+  const panel = document.getElementById('megaPanel');
+  if(panel){
+    panel.innerHTML = CATEGORY_GROUPS.map(g => `
+      <div class="mega-col">
+        <h4>${g.label}</h4>
+        ${CATEGORIES.filter(c => c.group === g.id).map(c => `
+          <a href="catalogo.html?categoria=${c.id}" class="mega-link">
+            <span class="mega-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${CATEGORY_ICONS[c.id] || ''}</svg></span>
+            ${c.name}
+          </a>`).join('')}
+      </div>`).join('') + `
+      <div class="mega-col mega-promo">
+        <h4>Destacado</h4>
+        <a href="membresias.html" class="mega-promo-card">
+          <span>KUBO Prime</span>
+          <p>Envío gratis y cashback en cada compra</p>
+        </a>
+      </div>`;
+  }
+
+  const mobileList = document.getElementById('mobileCatList');
+  if(mobileList){
+    mobileList.innerHTML = CATEGORY_GROUPS.map(g => `
+      <div class="mcat-group">
+        <span class="mcat-label">${g.label}</span>
+        ${CATEGORIES.filter(c => c.group === g.id).map(c => `
+          <a href="catalogo.html?categoria=${c.id}" class="mcat-link">
+            <span class="mega-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${CATEGORY_ICONS[c.id] || ''}</svg></span>
+            ${c.name}
+          </a>`).join('')}
+      </div>`).join('');
+  }
+}
 
 const PRODUCTS = [
   {id:1, name:'Televisor QLED KUBO 50" Google TV', brand:'KUBO', categoria:'audio-tv', price:429.99, old:499.99, tag:'-14%', stock:12, desc:'Pantalla QLED de 50 pulgadas con resolución 4K, Google TV integrado y control por voz. Ideal para streaming y gaming.'},
@@ -41,12 +100,24 @@ const PRODUCTS = [
   {id:29, name:'UPS 1500VA 6 tomas', brand:'MARSRIVA', categoria:'tecnologia', price:180.00, stock:11, desc:'Sistema de respaldo eléctrico con 6 tomas y protección contra picos de voltaje.'},
   {id:30, name:'Juego de sábanas King 4 piezas', brand:'AVON HILL', categoria:'hogar', price:12.99, stock:40, desc:'Juego de sábanas suaves de microfibra, tamaño King, 4 piezas incluidas.'},
   {id:31, name:'Almohada Clínica Health Tech', brand:'HEALTH TECH', categoria:'hogar', price:2.98, stock:60, desc:'Almohada ortopédica de espuma, brinda soporte cervical durante el descanso.'},
-  {id:32, name:'Juego de edredón 3 piezas', brand:'GENÉRICO', categoria:'hogar', price:16.99, stock:24, desc:'Edredón reversible de 3 piezas, tamaño Full/Queen, fácil de lavar.'}
+  {id:32, name:'Juego de edredón 3 piezas', brand:'GENÉRICO', categoria:'hogar', price:16.99, stock:24, desc:'Edredón reversible de 3 piezas, tamaño Full/Queen, fácil de lavar.'},
+  {id:33, name:'Vestido casual manga larga', brand:'ZAFIRO', categoria:'dama', price:18.99, stock:30, desc:'Vestido casual de tela suave, ideal para el día a día, disponible en varias tallas.'},
+  {id:34, name:'Blusa básica de algodón', brand:'ZAFIRO', categoria:'dama', price:9.99, old:12.99, tag:'-23%', stock:40, desc:'Blusa básica de algodón, corte cómodo y versátil para combinar con cualquier outfit.'},
+  {id:35, name:'Jean skinny tiro alto', brand:'DENIM CO', categoria:'dama', price:22.99, stock:26, desc:'Jean de tiro alto con corte skinny, tela stretch para mayor comodidad.'},
+  {id:36, name:'Camisa manga larga slim fit', brand:'URBAN LINE', categoria:'caballeros', price:16.99, stock:32, desc:'Camisa slim fit de algodón, ideal para looks casuales o formales.'},
+  {id:37, name:'Franela básica cuello redondo', brand:'URBAN LINE', categoria:'caballeros', price:7.99, stock:50, desc:'Franela de algodón 100%, corte clásico, disponible en varios colores.'},
+  {id:38, name:'Pantalón jean recto', brand:'DENIM CO', categoria:'caballeros', price:24.99, old:29.99, tag:'-17%', stock:20, desc:'Pantalón jean de corte recto, resistente para uso diario.'},
+  {id:39, name:'Conjunto deportivo niño 2 piezas', brand:'KIDS FUN', categoria:'kids', price:13.99, stock:28, desc:'Conjunto deportivo de franela y pantalón, tela suave ideal para el juego diario.'},
+  {id:40, name:'Vestido estampado niña', brand:'KIDS FUN', categoria:'kids', price:11.99, stock:24, desc:'Vestido con estampado divertido, tela fresca ideal para el clima cálido.'},
+  {id:41, name:'Zapatos deportivos unisex', brand:'RUNFAST', categoria:'calzado', price:28.99, old:34.99, tag:'-17%', stock:18, desc:'Zapatos deportivos con suela antideslizante y plantilla acolchada.'},
+  {id:42, name:'Sandalias casuales dama', brand:'ZAFIRO', categoria:'calzado', price:14.99, stock:22, desc:'Sandalias cómodas de uso diario, diseño versátil y ligero.'},
+  {id:43, name:'Zapatos formales caballero', brand:'URBAN LINE', categoria:'calzado', price:32.99, stock:15, desc:'Zapatos formales de cuero sintético, ideales para la oficina o eventos.'}
 ];
 
 const SKU_PREFIX = {
   'audio-tv':'AUD', 'aires':'AC', 'refrigeracion':'REF', 'electrodomesticos':'ELE',
-  'lavado':'LAV', 'cocina':'COC', 'tecnologia':'TEC', 'hogar':'HOG'
+  'lavado':'LAV', 'cocina':'COC', 'tecnologia':'TEC', 'hogar':'HOG',
+  'dama':'DAM', 'caballeros':'CAB', 'kids':'KID', 'calzado':'CAL'
 };
 PRODUCTS.forEach(p => {
   const prefix = SKU_PREFIX[p.categoria] || 'GEN';
@@ -84,7 +155,11 @@ const CATEGORY_SPECS = {
   'lavado': {tipo:'Lavado', consumoUnit:'kWh/mes', consumoRange:[25,55], capacidad:'Kg', capRange:[8,20], voltaje:'110V - 220V', garantia:'24 meses'},
   'cocina': {tipo:'Cocina', consumoUnit:'W', consumoRange:[1200,2200], dims:true, voltaje:'110V', garantia:'12 meses'},
   'tecnologia': {tipo:'Tecnología', consumoUnit:'W', consumoRange:[5,45], conectividad:'WiFi / USB / Bluetooth', voltaje:'100V - 240V', garantia:'12 meses'},
-  'hogar': {tipo:'Hogar', material:'Textil / Espuma', cuidado:'Lavado a máquina', voltaje:null, garantia:'6 meses'}
+  'hogar': {tipo:'Hogar', material:'Textil / Espuma', cuidado:'Lavado a máquina', voltaje:null, garantia:'6 meses'},
+  'dama': {tipo:'Ropa Dama', material:'Algodón / Poliéster', tallas:'S, M, L, XL', cuidado:'Lavado a máquina', garantia:'30 días'},
+  'caballeros': {tipo:'Ropa Caballeros', material:'Algodón / Poliéster', tallas:'S, M, L, XL, XXL', cuidado:'Lavado a máquina', garantia:'30 días'},
+  'kids': {tipo:'Ropa Niños', material:'Algodón', tallas:'2, 4, 6, 8, 10 años', cuidado:'Lavado a máquina', garantia:'30 días'},
+  'calzado': {tipo:'Calzado', material:'Sintético / Cuero', tallas:'35 al 44', cuidado:'Limpiar con paño húmedo', garantia:'30 días'}
 };
 
 const COLOR_NAMES = ['Negro','Blanco','Gris grafito','Plateado','Negro mate'];
@@ -111,6 +186,7 @@ function specsFor(p){
     specs.push({label:'Consumo energético', value:`${cons} ${c.consumoUnit}`});
   }
   if(c.material) specs.push({label:'Material', value:c.material});
+  if(c.tallas) specs.push({label:'Tallas disponibles', value:c.tallas});
   if(c.conectividad) specs.push({label:'Conectividad', value:c.conectividad});
   if(c.cuidado) specs.push({label:'Cuidado', value:c.cuidado});
   if(c.voltaje) specs.push({label:'Voltaje', value:c.voltaje});
@@ -126,7 +202,11 @@ const CATEGORY_FEATURES = {
   'lavado': ['Múltiples programas de lavado','Tambor de acero inoxidable','Bajo consumo de agua y energía','Centrifugado de alta eficiencia'],
   'cocina': ['Encendido eléctrico automático','Superficie fácil de limpiar','Distribución uniforme del calor','Controles de temperatura precisos'],
   'tecnologia': ['Configuración rápida y sencilla','Compatible con múltiples dispositivos','Actualizaciones de firmware incluidas','Diseño compacto y portátil'],
-  'hogar': ['Materiales suaves y duraderos','Fácil mantenimiento y lavado','Diseño versátil para cualquier ambiente','Costuras reforzadas']
+  'hogar': ['Materiales suaves y duraderos','Fácil mantenimiento y lavado','Diseño versátil para cualquier ambiente','Costuras reforzadas'],
+  'dama': ['Tela suave y transpirable','Corte moderno y versátil','Colores de temporada','Fácil combinación con otras prendas'],
+  'caballeros': ['Tela resistente de uso diario','Corte cómodo y ajuste moderno','Ideal para cualquier ocasión','Fácil cuidado y planchado'],
+  'kids': ['Tela suave, ideal para piel sensible','Diseño resistente para el juego diario','Colores y estampados divertidos','Fácil de lavar'],
+  'calzado': ['Suela antideslizante','Plantilla acolchada para mayor comodidad','Materiales resistentes al uso diario','Diseño versátil para el día a día']
 };
 function featuresFor(p){
   return CATEGORY_FEATURES[p.categoria] || ['Calidad garantizada','Diseño funcional','Fácil de usar'];
@@ -238,7 +318,7 @@ function initBurger(){
   const mobileNav = document.getElementById('mobileNav');
   if(!burgerBtn) return;
   burgerBtn.addEventListener('click', () => mobileNav.classList.toggle('open'));
-  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
+  mobileNav.addEventListener('click', e => { if(e.target.closest('a')) mobileNav.classList.remove('open'); });
 }
 
 function initHeaderSearch(){
@@ -256,6 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateFavBadge();
   initBurger();
   initHeaderSearch();
+  initMegaMenu();
 });
 
 const USER = {

@@ -642,3 +642,29 @@ footer ul li a:hover{color:var(--yellow);}
   .lightbox-next{right:10px;}
   .pd-extra-block{padding:20px;}
 }
+
+.nav-item-mega{position:relative;display:flex;align-items:center;}
+.nav-link-mega{display:flex;align-items:center;gap:5px;cursor:pointer;}
+.nav-link-mega svg{width:11px;height:11px;transition:transform .2s;color:#8A8A8E;}
+.nav-item-mega:hover .nav-link-mega svg{transform:rotate(180deg);color:var(--yellow);}
+.mega-panel{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);width:520px;background:#fff;border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,0.18);padding:26px 28px;display:grid;grid-template-columns:1fr 1fr 0.9fr;gap:8px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .18s ease,transform .18s ease,visibility .18s;z-index:80;}
+.nav-item-mega:hover .mega-panel{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0);}
+.mega-panel::before{content:"";position:absolute;top:-6px;left:50%;transform:translateX(-50%) rotate(45deg);width:12px;height:12px;background:#fff;}
+.mega-col h4{font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;padding:0 10px;}
+.mega-link{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;font-size:13.5px;font-weight:600;color:#3A3A3D;transition:background .15s,color .15s;}
+.mega-link:hover{background:var(--paper);color:var(--black);}
+.mega-ic{width:26px;height:26px;border-radius:8px;background:var(--paper);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.mega-link:hover .mega-ic{background:var(--yellow);}
+.mega-ic svg{width:14px;height:14px;color:var(--black);}
+.mega-promo{padding-left:14px;border-left:1px solid #F0EEE8;}
+.mega-promo-card{display:block;background:var(--black);border-radius:14px;padding:16px;color:#fff;transition:transform .15s;}
+.mega-promo-card:hover{transform:translateY(-2px);}
+.mega-promo-card span{font-family:'Archivo Black';font-size:14px;color:var(--yellow);display:block;}
+.mega-promo-card p{font-size:12px;color:#B7B7BC;margin-top:6px;line-height:1.4;}
+@media(max-width:1180px){.mega-panel{width:460px;}}
+
+.mcat-group{margin:10px 0 6px;}
+.mcat-label{display:block;font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding:8px 0 6px;}
+.mcat-link{display:flex;align-items:center;gap:10px;padding:9px 0;font-size:14px;font-weight:600;color:#C9C9CD;border-bottom:1px solid var(--line);}
+.mcat-link .mega-ic{background:var(--black-2);}
+.mcat-link .mega-ic svg{color:var(--yellow);}
