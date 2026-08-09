@@ -67,6 +67,71 @@ function cubeIconSVG(seed){
   return `<svg viewBox="0 0 200 200"><path d="M100 15 L175 55 L100 95 L25 55 Z" fill="${colors[0]}" opacity="${colors[1]}"/><path d="M25 55 L100 95 L100 185 L25 145 Z" fill="${colors[2]}" opacity="${colors[3]}"/><path d="M175 55 L100 95 L100 185 L175 145 Z" fill="${colors[4]}" opacity="${colors[5]}"/></svg>`;
 }
 
+function galleryFor(id){
+  return [0,1,2,3].map(i => ({ svg: cubeIconSVG(id + i), flip: i % 2 === 1 }));
+}
+
+function hashNum(id, mod, offset){
+  offset = offset || 0;
+  return ((id * 97 + offset * 31) % mod);
+}
+
+const CATEGORY_SPECS = {
+  'audio-tv': {tipo:'Televisor / Audio', consumoUnit:'W', consumoRange:[60,180], dims:true, voltaje:'110V - 220V', garantia:'12 meses'},
+  'aires': {tipo:'Aire acondicionado', consumoUnit:'kWh/mes', consumoRange:[90,220], dims:true, voltaje:'220V', garantia:'24 meses'},
+  'refrigeracion': {tipo:'Refrigeración', consumoUnit:'kWh/mes', consumoRange:[35,70], capacidad:'Litros', capRange:[150,500], voltaje:'110V - 220V', garantia:'24 meses'},
+  'electrodomesticos': {tipo:'Electrodoméstico', consumoUnit:'W', consumoRange:[300,1200], dims:true, voltaje:'110V', garantia:'12 meses'},
+  'lavado': {tipo:'Lavado', consumoUnit:'kWh/mes', consumoRange:[25,55], capacidad:'Kg', capRange:[8,20], voltaje:'110V - 220V', garantia:'24 meses'},
+  'cocina': {tipo:'Cocina', consumoUnit:'W', consumoRange:[1200,2200], dims:true, voltaje:'110V', garantia:'12 meses'},
+  'tecnologia': {tipo:'Tecnología', consumoUnit:'W', consumoRange:[5,45], conectividad:'WiFi / USB / Bluetooth', voltaje:'100V - 240V', garantia:'12 meses'},
+  'hogar': {tipo:'Hogar', material:'Textil / Espuma', cuidado:'Lavado a máquina', voltaje:null, garantia:'6 meses'}
+};
+
+const COLOR_NAMES = ['Negro','Blanco','Gris grafito','Plateado','Negro mate'];
+
+function specsFor(p){
+  const c = CATEGORY_SPECS[p.categoria] || {};
+  const specs = [];
+  specs.push({label:'Marca', value:p.brand});
+  specs.push({label:'Tipo', value:c.tipo || '—'});
+  specs.push({label:'SKU', value:p.sku});
+  specs.push({label:'Color', value:COLOR_NAMES[hashNum(p.id,COLOR_NAMES.length)]});
+  if(c.dims){
+    const a = 20 + hashNum(p.id,60,1);
+    const b = 15 + hashNum(p.id,50,2);
+    const d = 10 + hashNum(p.id,40,3);
+    specs.push({label:'Dimensiones', value:`${a} x ${b} x ${d} cm`});
+  }
+  if(c.capacidad){
+    const cap = c.capRange[0] + hashNum(p.id, c.capRange[1]-c.capRange[0], 4);
+    specs.push({label:'Capacidad', value:`${cap} ${c.capacidad}`});
+  }
+  if(c.consumoUnit){
+    const cons = c.consumoRange[0] + hashNum(p.id, c.consumoRange[1]-c.consumoRange[0], 5);
+    specs.push({label:'Consumo energético', value:`${cons} ${c.consumoUnit}`});
+  }
+  if(c.material) specs.push({label:'Material', value:c.material});
+  if(c.conectividad) specs.push({label:'Conectividad', value:c.conectividad});
+  if(c.cuidado) specs.push({label:'Cuidado', value:c.cuidado});
+  if(c.voltaje) specs.push({label:'Voltaje', value:c.voltaje});
+  specs.push({label:'Garantía', value:c.garantia || '12 meses'});
+  return specs;
+}
+
+const CATEGORY_FEATURES = {
+  'audio-tv': ['Resolución de imagen nítida y colores vivos','Conectividad HDMI y USB para tus dispositivos','Diseño delgado, ideal para cualquier espacio','Sonido envolvente integrado'],
+  'aires': ['Tecnología inverter para bajo consumo','Filtro purificador de aire incluido','Control remoto con temporizador','Funcionamiento silencioso'],
+  'refrigeracion': ['Sistema No-Frost, sin escarcha','Organización interna ajustable','Bajo nivel de ruido en funcionamiento','Eficiencia energética certificada'],
+  'electrodomesticos': ['Materiales resistentes y fáciles de limpiar','Múltiples velocidades y funciones','Diseño compacto que ahorra espacio','Componentes de larga duración'],
+  'lavado': ['Múltiples programas de lavado','Tambor de acero inoxidable','Bajo consumo de agua y energía','Centrifugado de alta eficiencia'],
+  'cocina': ['Encendido eléctrico automático','Superficie fácil de limpiar','Distribución uniforme del calor','Controles de temperatura precisos'],
+  'tecnologia': ['Configuración rápida y sencilla','Compatible con múltiples dispositivos','Actualizaciones de firmware incluidas','Diseño compacto y portátil'],
+  'hogar': ['Materiales suaves y duraderos','Fácil mantenimiento y lavado','Diseño versátil para cualquier ambiente','Costuras reforzadas']
+};
+function featuresFor(p){
+  return CATEGORY_FEATURES[p.categoria] || ['Calidad garantizada','Diseño funcional','Fácil de usar'];
+}
+
 function formatPrice(n){
   return n.toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2});
 }

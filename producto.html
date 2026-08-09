@@ -76,6 +76,14 @@
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.7 14.2c-.2.7-1.4 1.4-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.3-4.8-4.2-4.9-4.4-.1-.2-1.2-1.6-1.2-3s.8-2.1 1.1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2 .1.2.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.4.1.6-.1l.9-1c.2-.3.4-.2.7-.1.3.1 1.7.8 2 .9.3.2.5.2.6.3.1.2.1.9-.1 1.6z"/></svg>
 </a>
 
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <div class="lightbox-img" id="lightboxImg"></div>
+  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 18l6-6-6-6"/></svg></button>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
 <script src="assets/store.js"></script>
 <script>
 const pid = new URLSearchParams(window.location.search).get('id');
@@ -97,6 +105,7 @@ content.innerHTML = `
     </div>
   </div>`;
 document.getElementById('relatedGrid').innerHTML = skeletonGrid(4);
+
 
 setTimeout(renderProduct, 500);
 
@@ -120,7 +129,17 @@ if(!product){
   content.innerHTML = `
     <div class="wrap">
       <div class="pd-grid">
-        <div class="pd-gallery">${cubeIconSVG(product.id)}</div>
+        <div class="pd-media">
+          <div class="pd-thumbs" id="pdThumbs"></div>
+          <div class="pd-main-wrap">
+            <div class="pd-main" id="pdMain">
+              ${product.tag ? `<span class="pd-tag-badge">${product.tag}</span>` : ''}
+            </div>
+            <button class="pd-zoom-btn" id="pdZoomBtn" aria-label="Ver en detalle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>
+            </button>
+          </div>
+        </div>
         <div>
           <div class="pd-brand">${product.brand} <span style="color:var(--muted);font-weight:600;">· SKU ${product.sku}</span></div>
           <h1 class="pd-name">${product.name}</h1>
@@ -161,12 +180,66 @@ if(!product){
           </div>
         </div>
       </div>
+
+      <div class="pd-extra">
+        <div class="pd-extra-block">
+          <h3>Especificaciones</h3>
+          ${specsFor(product).map(s => `<div class="spec-row"><span class="k">${s.label}</span><span class="v">${s.value}</span></div>`).join('')}
+        </div>
+        <div class="pd-extra-block">
+          <h3>Características principales</h3>
+          <ul class="feature-list">
+            ${featuresFor(product).map(f => `<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> ${f}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
     </div>`;
+
+  const gallery = galleryFor(product.id);
+  let currentImg = 0;
+  const pdMain = document.getElementById('pdMain');
+  const pdThumbs = document.getElementById('pdThumbs');
+
+  function renderMain(){
+    pdMain.classList.toggle('flipped', gallery[currentImg].flip);
+    const badge = product.tag ? `<span class="pd-tag-badge">${product.tag}</span>` : '';
+    pdMain.innerHTML = badge + gallery[currentImg].svg;
+    pdThumbs.querySelectorAll('.pd-thumb').forEach((t,i) => t.classList.toggle('active', i === currentImg));
+  }
+  pdThumbs.innerHTML = gallery.map((g,i) => `<div class="pd-thumb ${i === 0 ? 'active' : ''}" data-i="${i}">${g.svg}</div>`).join('');
+  pdThumbs.querySelectorAll('.pd-thumb').forEach(t => t.addEventListener('click', () => { currentImg = Number(t.dataset.i); renderMain(); }));
+  pdMain.addEventListener('click', () => openLightbox(currentImg));
+  document.getElementById('pdZoomBtn').addEventListener('click', () => openLightbox(currentImg));
+  renderMain();
 
   let qty = 1;
   const qtyVal = document.getElementById('qtyVal');
   document.getElementById('qtyPlus').addEventListener('click', () => { if(qty < product.stock){ qty++; qtyVal.textContent = qty; } });
   document.getElementById('qtyMinus').addEventListener('click', () => { if(qty > 1){ qty--; qtyVal.textContent = qty; } });
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCounter = document.getElementById('lightboxCounter');
+  let lbIndex = 0;
+  function renderLightbox(){
+    lightboxImg.classList.toggle('flipped', gallery[lbIndex].flip);
+    lightboxImg.innerHTML = gallery[lbIndex].svg;
+    lightboxCounter.textContent = `${lbIndex + 1} / ${gallery.length}`;
+    currentImg = lbIndex;
+    renderMain();
+  }
+  function openLightbox(i){ lbIndex = i; renderLightbox(); lightbox.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeLightbox(){ lightbox.classList.remove('open'); document.body.style.overflow = ''; }
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if(e.target === lightbox) closeLightbox(); });
+  document.getElementById('lightboxPrev').addEventListener('click', () => { lbIndex = (lbIndex - 1 + gallery.length) % gallery.length; renderLightbox(); });
+  document.getElementById('lightboxNext').addEventListener('click', () => { lbIndex = (lbIndex + 1) % gallery.length; renderLightbox(); });
+  document.addEventListener('keydown', e => {
+    if(!lightbox.classList.contains('open')) return;
+    if(e.key === 'Escape') closeLightbox();
+    if(e.key === 'ArrowLeft'){ lbIndex = (lbIndex - 1 + gallery.length) % gallery.length; renderLightbox(); }
+    if(e.key === 'ArrowRight'){ lbIndex = (lbIndex + 1) % gallery.length; renderLightbox(); }
+  });
   document.getElementById('addBtn').addEventListener('click', () => addToCart(product.id, qty));
 
   const favBtn = document.getElementById('favBtn');

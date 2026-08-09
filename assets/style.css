@@ -578,3 +578,59 @@ footer ul li a:hover{color:var(--yellow);}
   .mem-cta{padding:32px 22px;}
   .mem-cta h3{font-size:21px;}
 }
+
+.pd-media{display:flex;gap:14px;position:sticky;top:96px;}
+.pd-thumbs{display:flex;flex-direction:column;gap:10px;width:72px;flex-shrink:0;}
+.pd-thumb{background:#fff;border:2px solid #E7E5DF;border-radius:12px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:10px;cursor:pointer;transition:border-color .15s;}
+.pd-thumb svg{width:100%;height:100%;}
+.pd-thumb.active{border-color:var(--black);}
+.pd-thumb:hover{border-color:#B8B6AE;}
+.pd-main-wrap{flex:1;position:relative;}
+.pd-main{background:#fff;border:1px solid #E7E5DF;border-radius:var(--radius);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:50px;position:relative;overflow:hidden;cursor:zoom-in;}
+.pd-main svg{width:75%;height:75%;transition:transform .2s;}
+.pd-main.flipped svg{transform:scaleX(-1);}
+.pd-zoom-btn{position:absolute;bottom:16px;right:16px;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid #E7E5DF;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,0.1);cursor:pointer;z-index:2;transition:transform .15s,background .15s;}
+.pd-zoom-btn:hover{transform:scale(1.08);background:var(--paper);}
+.pd-zoom-btn svg{width:19px;height:19px;color:var(--ink);}
+.pd-tag-badge{position:absolute;top:14px;left:14px;background:var(--yellow);color:var(--black);font-size:11px;font-weight:800;padding:5px 12px;border-radius:100px;z-index:2;}
+
+.lightbox{position:fixed;inset:0;background:rgba(11,11,12,0.92);z-index:200;display:none;align-items:center;justify-content:center;}
+.lightbox.open{display:flex;}
+.lightbox-img{width:min(70vw,560px);height:min(70vw,560px);display:flex;align-items:center;justify-content:center;padding:30px;}
+.lightbox-img svg{width:100%;height:100%;}
+.lightbox-img.flipped svg{transform:scaleX(-1);}
+.lightbox-close{position:absolute;top:24px;right:24px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.1);border:none;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s;}
+.lightbox-close:hover{background:rgba(255,255,255,0.2);}
+.lightbox-close svg{width:20px;height:20px;}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.1);border:none;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s;}
+.lightbox-nav:hover{background:rgba(255,255,255,0.2);}
+.lightbox-nav svg{width:22px;height:22px;}
+.lightbox-prev{left:24px;}
+.lightbox-next{right:24px;}
+.lightbox-counter{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:#B7B7BC;font-size:12.5px;font-weight:700;}
+
+.pd-extra{display:grid;grid-template-columns:1.3fr 1fr;gap:22px;margin-top:22px;}
+.pd-extra-block{background:#fff;border:1px solid #E7E5DF;border-radius:var(--radius);padding:24px 26px;}
+.pd-extra-block h3{font-family:'Archivo Black';font-size:16px;margin-bottom:16px;}
+.spec-row{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid #F4F2EC;font-size:13.5px;}
+.spec-row:last-child{border-bottom:none;}
+.spec-row .k{color:var(--muted);font-weight:600;}
+.spec-row .v{font-weight:800;color:var(--ink);text-align:right;}
+.feature-list{list-style:none;display:flex;flex-direction:column;gap:13px;}
+.feature-list li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;line-height:1.45;color:#3A3A3D;}
+.feature-list li svg{width:17px;height:17px;color:var(--yellow);background:var(--black);border-radius:50%;padding:3px;flex-shrink:0;margin-top:1px;}
+
+@media(max-width:900px){
+  .pd-media{position:static;flex-direction:column-reverse;}
+  .pd-thumbs{flex-direction:row;width:auto;overflow-x:auto;}
+  .pd-thumb{width:64px;flex-shrink:0;}
+  .pd-extra{grid-template-columns:1fr;margin-top:16px;}
+}
+@media(max-width:480px){
+  .pd-main{padding:34px;}
+  .lightbox-img{width:88vw;height:88vw;padding:16px;}
+  .lightbox-nav{width:40px;height:40px;}
+  .lightbox-prev{left:10px;}
+  .lightbox-next{right:10px;}
+  .pd-extra-block{padding:20px;}
+}
