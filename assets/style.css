@@ -425,14 +425,24 @@ footer ul li a:hover{color:var(--yellow);}
 .acc-tab{display:none;}
 .acc-tab.active{display:block;}
 @media(max-width:900px){
-  .acc-layout{grid-template-columns:1fr;}
-  .acc-side{position:static;}
-  .acc-nav{flex-direction:row;overflow-x:auto;gap:8px;padding-bottom:4px;}
-  .acc-nav button{white-space:nowrap;}
+  .acc-layout{grid-template-columns:1fr;gap:16px;}
+  .acc-side{position:static;padding:16px;}
+  .acc-profile{padding-bottom:16px;margin-bottom:14px;}
+  .acc-nav{flex-direction:row;overflow-x:auto;gap:8px;padding-bottom:2px;flex-wrap:nowrap;scrollbar-width:none;-ms-overflow-style:none;margin:0 -16px;padding-left:16px;padding-right:16px;}
+  .acc-nav::-webkit-scrollbar{display:none;}
+  .acc-nav button{white-space:nowrap;flex-shrink:0;background:var(--paper);border-radius:100px;padding:10px 16px;gap:8px;}
+  .acc-nav button svg{width:16px;height:16px;}
+  .acc-nav button.active{background:var(--black);color:var(--yellow);}
+  .acc-nav button:not(.active):not(.danger):hover{background:#EFEDE6;}
   .acc-nav .sep{display:none;}
+  .acc-nav button.danger{background:#FEECEC;order:99;}
   .balance-card .amt{font-size:34px;}
 }
 @media(max-width:480px){
+  .acc-side{padding:14px;}
+  .acc-avatar{width:40px;height:40px;font-size:14px;}
+  .acc-profile .nm{font-size:13.5px;}
+  .acc-profile .em{font-size:11px;}
   .balance-card{padding:24px 20px;}
   .balance-card .amt{font-size:28px;}
   .balance-card .actions{flex-direction:column;}
