@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Producto — KUBO</title>
+<meta name="description" id="metaDesc" content="Descubre productos de electrodomésticos, tecnología y hogar en KUBO. Envíos a toda Venezuela.">
+<link rel="canonical" id="metaCanonical" href="https://tiendakubo.vercel.app/producto.html">
+<meta name="robots" content="index, follow">
 <link rel="icon" type="image/svg+xml" href="assets/logo-kubo.svg">
 <link rel="stylesheet" href="assets/style.css">
 </head>
@@ -121,6 +124,26 @@ if(!product){
     </div>`;
 } else {
   document.title = product.name + ' — KUBO';
+  document.getElementById('metaDesc').setAttribute('content', `${product.name} de ${product.brand} por $${formatPrice(product.price)}. ${product.desc}`.slice(0,160));
+  document.getElementById('metaCanonical').setAttribute('href', `https://tiendakubo.vercel.app/producto.html?id=${product.id}`);
+  const ldScript = document.createElement('script');
+  ldScript.type = 'application/ld+json';
+  ldScript.textContent = JSON.stringify({
+    "@context":"https://schema.org",
+    "@type":"Product",
+    "name":product.name,
+    "sku":product.sku,
+    "brand":{"@type":"Brand","name":product.brand},
+    "description":product.desc,
+    "offers":{
+      "@type":"Offer",
+      "url":`https://tiendakubo.vercel.app/producto.html?id=${product.id}`,
+      "priceCurrency":"USD",
+      "price":product.price,
+      "availability":product.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
+    }
+  });
+  document.head.appendChild(ldScript);
   const catName = CATEGORIES.find(c => c.id === product.categoria)?.name || '';
   document.getElementById('crumbCat').textContent = catName;
   document.getElementById('crumbCat').href = 'catalogo.html?categoria=' + product.categoria;

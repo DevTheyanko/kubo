@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /cuenta.html
+Disallow: /carrito.html
+Disallow: /favoritos.html
+Disallow: /login.html
+Disallow: /registro.html
+Disallow: /recuperar.html
+
+Sitemap: https://tiendakubo.vercel.app/sitemap.xml
