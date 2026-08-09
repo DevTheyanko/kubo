@@ -513,12 +513,7 @@ footer ul li a:hover{color:var(--yellow);}
 .mem-hero .eyebrow{justify-content:center;}
 .mem-hero h1{font-family:'Archivo Black';font-size:42px;letter-spacing:-0.01em;max-width:640px;margin:0 auto;line-height:1.08;}
 .mem-hero p{color:#B7B7BC;font-size:15.5px;max-width:520px;margin:16px auto 0;line-height:1.6;}
-.billing-toggle{display:inline-flex;align-items:center;gap:4px;background:var(--black-2);border:1px solid var(--line);border-radius:100px;padding:5px;margin-top:30px;}
-.billing-toggle button{padding:9px 20px;border-radius:100px;border:none;background:none;color:#B7B7BC;font-weight:800;font-size:13px;cursor:pointer;transition:background .2s,color .2s;position:relative;}
-.billing-toggle button.active{background:var(--yellow);color:var(--black);}
-.billing-toggle .save{position:absolute;top:-11px;right:-6px;background:#2FB86E;color:#fff;font-size:9px;font-weight:800;padding:2px 7px;border-radius:100px;white-space:nowrap;}
-
-.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:-40px;position:relative;z-index:2;min-width:0;}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:16px;position:relative;z-index:2;min-width:0;}
 .plans-grid > *{min-width:0;}
 .plan-card{background:#fff;border:1px solid #EBE9E3;border-radius:22px;padding:30px 28px;display:flex;flex-direction:column;box-shadow:0 20px 45px rgba(20,20,22,0.05);}
 .plan-card.featured{background:var(--black);color:var(--paper);border-color:var(--black);transform:translateY(-14px);box-shadow:0 30px 60px rgba(20,20,22,0.25);}
@@ -577,13 +572,16 @@ footer ul li a:hover{color:var(--yellow);}
   .mem-hero{padding:44px 0 40px;}
   .mem-hero h1{font-size:24px;}
   .mem-hero p{font-size:14px;}
-  .billing-toggle{flex-direction:column;padding:6px;width:100%;max-width:280px;}
-  .billing-toggle button{width:100%;}
-  .billing-toggle .save{position:static;display:inline-block;margin-left:8px;}
   .plan-card{padding:24px 20px;}
   .plan-price .num{font-size:30px;}
   .mem-cta{padding:32px 22px;}
   .mem-cta h3{font-size:21px;}
+  .mem-cta p{font-size:13px;}
+  .mem-cta .btn{width:100%;justify-content:center;}
+  .compare-table th,.compare-table td{padding:12px 10px;font-size:12.5px;}
+  .compare-table td:first-child,.compare-table th:first-child{min-width:170px;}
+  .faq-q{font-size:13.5px;gap:10px;}
+  .plan-features li{font-size:13px;}
 }
 
 .pd-media{display:flex;gap:14px;position:sticky;top:96px;}

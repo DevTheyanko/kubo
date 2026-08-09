@@ -52,10 +52,6 @@
     <div class="eyebrow">KUBO membresías</div>
     <h1 class="hd">Elige el plan que mejor se adapta a tu forma de comprar</h1>
     <p>Envíos gratis, cashback, cuotas ampliadas y beneficios exclusivos. Cambia o cancela cuando quieras.</p>
-    <div class="billing-toggle">
-      <button class="active" data-billing="mensual">Mensual</button>
-      <button data-billing="anual">Anual <span class="save">Ahorra 20%</span></button>
-    </div>
   </div>
 </section>
 
@@ -156,7 +152,7 @@ const dash = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-
 const PLANS = [
   {
     id:'basico', name:'KUBO Básico', desc:'Para quienes compran de vez en cuando.',
-    priceM:0, priceA:0, badge:null,
+    price:0, badge:null,
     features:[
       {t:'Acceso a ofertas y catálogo completo', on:true},
       {t:'Envío estándar a todo el país', on:true},
@@ -169,7 +165,7 @@ const PLANS = [
   },
   {
     id:'plus', name:'KUBO Plus', desc:'Ideal para compras frecuentes del hogar.',
-    priceM:4.99, priceA:47.90, badge:'Más popular',
+    price:4.99, badge:'Más popular',
     features:[
       {t:'Todo lo de KUBO Básico', on:true},
       {t:'Envío gratis en compras +$50', on:true},
@@ -182,7 +178,7 @@ const PLANS = [
   },
   {
     id:'prime', name:'KUBO Prime', desc:'Máximos beneficios para compradores exigentes.',
-    priceM:9.99, priceA:95.90, badge:null,
+    price:9.99, badge:null,
     features:[
       {t:'Todo lo de KUBO Plus', on:true},
       {t:'Envío gratis sin monto mínimo', on:true},
@@ -195,12 +191,8 @@ const PLANS = [
   }
 ];
 
-let billing = 'mensual';
-
 function renderPlans(){
   document.getElementById('plansGrid').innerHTML = PLANS.map(p => {
-    const price = billing === 'mensual' ? p.priceM : p.priceA;
-    const per = billing === 'mensual' ? '/mes' : '/año';
     const featured = p.badge ? 'featured' : '';
     return `
     <div class="plan-card ${featured}">
@@ -208,26 +200,16 @@ function renderPlans(){
       <div class="plan-name">${p.name}</div>
       <div class="plan-desc">${p.desc}</div>
       <div class="plan-price">
-        <span class="num">${price === 0 ? 'Gratis' : '$' + formatPrice(price)}</span>
-        ${price > 0 ? `<span class="per">${per}</span>` : ''}
+        <span class="num">${p.price === 0 ? 'Gratis' : '$' + formatPrice(p.price)}</span>
+        ${p.price > 0 ? `<span class="per">/mes</span>` : ''}
       </div>
-      ${billing === 'anual' && price > 0 ? `<div class="plan-old-price">$${formatPrice(p.priceM * 12)} pagando mes a mes</div>` : '<div style="height:18px;"></div>'}
-      <button class="btn ${p.badge ? 'btn-primary' : 'btn-dark'} plan-cta" onclick="suscribir('${p.name}')">${price === 0 ? 'Comenzar gratis' : 'Suscribirme'}</button>
+      <button class="btn ${p.badge ? 'btn-primary' : 'btn-dark'} plan-cta" onclick="suscribir('${p.name}')">${p.price === 0 ? 'Comenzar gratis' : 'Suscribirme'}</button>
       <ul class="plan-features">
         ${p.features.map(f => `<li class="${f.on ? '' : 'muted'}">${f.on ? check : dash} ${f.t}</li>`).join('')}
       </ul>
     </div>`;
   }).join('');
 }
-
-document.querySelectorAll('.billing-toggle button').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.billing-toggle button').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    billing = btn.dataset.billing;
-    renderPlans();
-  });
-});
 
 function suscribir(plan){
   window.open('https://wa.me/584240000000?text=' + encodeURIComponent(`Hola, quiero suscribirme a la membresía ${plan}`), '_blank');
