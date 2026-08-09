@@ -154,7 +154,7 @@ function productCardHTML(p){
     <div class="card reveal show" data-id="${p.id}">
       ${p.tag ? `<span class="tag">${p.tag}</span>` : ''}
       <button class="fav ${getFavs().includes(p.id) ? 'active' : ''}" onclick="event.stopPropagation();toggleFav(${p.id});this.classList.toggle('active')" aria-label="Favorito">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-9.5-9C.5 8 2 4 6 4c2 0 3.5 1.2 4 2.5C10.5 5.2 12 4 14 4c4 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20.5c-.28 0-.55-.1-.76-.3C7.02 16.6 3 13.1 3 9.3 3 6.6 5.1 4.5 7.8 4.5c1.68 0 3.24.86 4.2 2.24.96-1.38 2.52-2.24 4.2-2.24 2.7 0 4.8 2.1 4.8 4.8 0 3.8-4.02 7.3-8.24 10.9-.21.2-.48.3-.76.3z"/></svg>
       </button>
       <div class="imgbox"><a href="producto.html?id=${p.id}">${cubeIconSVG(p.id)}</a></div>
       <div class="body">
