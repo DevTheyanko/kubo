@@ -317,8 +317,23 @@ function initBurger(){
   const burgerBtn = document.getElementById('burgerBtn');
   const mobileNav = document.getElementById('mobileNav');
   if(!burgerBtn) return;
-  burgerBtn.addEventListener('click', () => mobileNav.classList.toggle('open'));
-  mobileNav.addEventListener('click', e => { if(e.target.closest('a')) mobileNav.classList.remove('open'); });
+  const header = document.querySelector('header.site');
+  function openMenu(){
+    mobileNav.style.top = header.offsetHeight + 'px';
+    mobileNav.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu(){
+    mobileNav.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  burgerBtn.addEventListener('click', () => {
+    mobileNav.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  mobileNav.addEventListener('click', e => { if(e.target.closest('a')) closeMenu(); });
+  window.addEventListener('resize', () => {
+    if(mobileNav.classList.contains('open')) mobileNav.style.top = header.offsetHeight + 'px';
+  });
 }
 
 function initHeaderSearch(){
